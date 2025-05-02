@@ -1,0 +1,88 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+#menu-toggle {
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    border: none;
+}
+
+#sidebar {
+    width: 200px;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    height: calc(100% - 50px);
+    background-color: #f4f4f4;
+    transition: left 0.3s;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar h2 {
+    font-size: 18px;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    margin: 10px 0;
+}
+
+#sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px;
+    display: block;
+    border-radius: 4px;
+}
+
+#sidebar ul li a:hover {
+    background-color: #e9ecef;
+}
+
+.submenu {
+    display: none; /* Скрываем вложенные списки по умолчанию */
+    padding-left: 15px; /* Отступ для вложенных списков */
+}
+
+.submenu-toggle {
+    cursor: pointer; /* Курсор при наведении на заголовок подменю */
+    color: #007BFF; /* Цвет текста для заголовка подменю */
+}
+
+.submenu-toggle:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+#content {
+    margin-left: 220px; /* Отступ для контента */
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f1f1f1;
+    width: 100%;
+}

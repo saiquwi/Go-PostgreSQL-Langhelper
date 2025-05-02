@@ -1,0 +1,69 @@
+{{define "content"}}
+<link rel="stylesheet" href="/static/css/mywords.css">
+
+<div class="container">
+    <h1>My Words</h1>
+
+    <div class="add-word-form">
+        <h2>Add New Word</h2>
+        <form method="POST" action="/mywords" id="wordForm">
+            <table class="translation-table">
+                <tbody>
+                    {{range $index, $lang := .Langs}}
+                    <tr>
+                        <td class="language-label">
+                            <label for="translation{{$index}}">{{$lang}}</label>
+                        </td>
+                        <td>
+                            <input type="text" id="translation{{$index}}" name="translations[]" 
+                                   placeholder="Enter {{$lang}} translation" class="translation-input">
+                        </td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td colspan="2" class="no-languages-message">
+                            Please configure languages first in <a href="/mylanguages">My Languages</a>
+                        </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+            
+            {{if .Langs}}
+            <button type="submit" class="add-button">Add Word</button>
+            {{end}}
+        </form>
+    </div>
+    
+    <table class="words-table">  <!-- Было table table-striped -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                {{range .Langs}}
+                <th>{{.}}</th>
+                {{else}}
+                <th colspan="5">No languages configured</th>
+                {{end}}
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Words}}
+            <tr>
+                <td>{{.ID}}</td>
+                {{if $.Langs}}
+                    <td>{{.Tran1}}</td>
+                    <td>{{.Tran2}}</td>
+                    <td>{{.Tran3}}</td>
+                    <td>{{.Tran4}}</td>
+                    <td>{{.Tran5}}</td>
+                {{else}}
+                    <td colspan="5">Please configure languages first</td>
+                {{end}}
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+</div>
+
+<script src="/static/js/mywords.js"></script>
+{{end}}

@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column; /* Устанавливаем вертикальное направление для flexbox */
+    min-height: 100vh; /* Задаем минимальную высоту для body */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px;
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    align-items: center; /* Центрируем элементы по вертикали */
+    justify-content: flex-end;
+    position: relative; /* Чтобы кнопка не была перекрыта */
+    z-index: 10; /* Поднимаем хедер над другими элементами */
+}
+
+h1 {
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #f1f1f1;
+    position: bottom;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}

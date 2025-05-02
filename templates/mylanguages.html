@@ -1,0 +1,49 @@
+{{define "content"}}
+<link rel="stylesheet" href="/static/css/mylanguages.css">
+
+<div class="container">
+    <h1>My Languages</h1>
+    
+    {{if .Error}}
+    <div class="alert alert-danger">{{.Error}}</div>
+    {{end}}
+    
+    {{if .Success}}
+    <div class="alert alert-success">Languages successfully updated!</div>
+    {{end}}
+
+    <form method="POST" action="/mylanguages">
+        <div class="form-group">
+            <label for="lang1">Language 1:</label>
+            <input type="text" class="form-control" id="lang1" name="lang1" value="{{.Langs.Lang1}}" 
+                   placeholder="e.g. English" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="lang2">Language 2:</label>
+            <input type="text" class="form-control" id="lang2" name="lang2" value="{{.Langs.Lang2}}" 
+                   placeholder="e.g. Spanish">
+        </div>
+        
+        <div class="form-group">
+            <label for="lang3">Language 3:</label>
+            <input type="text" class="form-control" id="lang3" name="lang3" value="{{.Langs.Lang3}}" 
+                   placeholder="e.g. French">
+        </div>
+        
+        <div class="form-group">
+            <label for="lang4">Language 4:</label>
+            <input type="text" class="form-control" id="lang4" name="lang4" value="{{.Langs.Lang4}}" 
+                   placeholder="e.g. German">
+        </div>
+        
+        <div class="form-group">
+            <label for="lang5">Language 5:</label>
+            <input type="text" class="form-control" id="lang5" name="lang5" value="{{.Langs.Lang5}}" 
+                   placeholder="e.g. Japanese">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save Languages</button>
+    </form>
+</div>
+{{end}}

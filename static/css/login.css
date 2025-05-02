@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: top; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    flex-direction: column;
+    height: 100vh; /* Высота на весь экран */
+    margin: 0;
+    margin-top: 10vh;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Ширина формы */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Занимаем всю ширину формы */
+    padding: 10px;
+    margin: 10px 0; /* Отступы между элементами */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+}
+
+button {
+    width: 100%; /* Занимаем всю ширину */
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Темнее цвет кнопки при наведении */
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 15px; /* Отступ сверху */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    background-color: #007BFF; /* Цвет фона */
+    color: white; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    border-radius: 4px; /* Скругленные углы */
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Темный цвет при наведении */
+}

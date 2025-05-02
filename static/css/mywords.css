@@ -1,0 +1,210 @@
+/* Основные стили контейнера */
+/* Основные стили контейнера */
+.container {  /* Было .mywords-container */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Заголовок страницы */
+.container h1 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 2%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2.2rem;
+}
+
+.add-word-form {
+    background-color: #ffffff; /* Белый фон для формы */
+    border-radius: 8px; /* Скругленные углы */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    padding: 20px; /* Отступы внутри формы */
+    width: 35vw; /* Максимальная ширина формы */
+    margin: 20px auto; /* Центрирование формы */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-word-form h2 {
+    font-size: 24px; /* Размер заголовка */
+    margin-bottom: 15px; /* Отступ снизу */
+    color: #333; /* Цвет текста заголовка */
+}
+
+.wordForm {
+    width: 90%;
+}
+
+.form-row {
+    display: flex; /* Используем flexbox для выравнивания элементов */
+    flex-direction: column; /* Вертикальное направление для мобильных устройств */
+}
+
+.translation-table {
+    display: flex; /* Используем flexbox для горизонтального выравнивания */
+    justify-content: space-between; /* Распределяем пространство между меткой и полем ввода */
+    margin-bottom: 15px; /* Отступ между группами полей */
+    align-items: center;
+}
+
+.form-group label {
+    flex: 1; /* Метка занимает 1 часть доступного пространства */
+    font-weight: bold; /* Жирный шрифт для меток */
+    color: #555; /* Цвет текста меток */
+}
+
+.translation-input {
+    flex: 2; /* Поле ввода занимает 2 части доступного пространства */
+    width: 100%; /* Полная ширина поля ввода */
+    padding: 2%; /* Отступы внутри поля */
+    border: 1px solid #ccc; /* Цвет границы */
+    border-radius: 4px; /* Скругленные углы */
+    font-size: 16px; /* Размер шрифта */
+    transition: border-color 0.3s; /* Плавный переход для цвета границы */
+}
+
+.translation-input:focus {
+    border-color: #007BFF; /* Цвет границы при фокусе */
+    outline: none; /* Убираем стандартный контур */
+}
+
+.no-languages-message {
+    color: #d9534f; /* Цвет сообщения об ошибке */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.add-button {
+    background-color: #3498db; /* Цвет кнопки */
+    color: white; /* Цвет текста кнопки */
+    padding: 3% 4%; /* Отступы внутри кнопки */
+    border: none; /* Убираем стандартную границу */
+    border-radius: 4px; /* Скругленные углы */
+    cursor: pointer; /* Курсор при наведении */
+    font-size: 16px; /* Размер шрифта кнопки */
+    transition: background-color 0.3s; /* Плавный переход для цвета фона */
+    width: 10vw;
+    margin: 2% 30%;
+}
+
+.add-button:hover {
+    background-color: #3291d1; /* Цвет кнопки при наведении */
+}
+
+/* Стили таблицы слов */
+.words-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 30px;
+    background: #fff;
+}
+
+.words-table thead tr {
+    background-color: #3498db;
+    color: white;
+}
+
+.words-table th {
+    padding: 16px 20px;
+    font-weight: 600;
+    text-align: left;
+    position: relative;
+}
+
+.words-table th:first-child {
+    width: 80px;
+}
+
+.words-table tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s;
+}
+
+.words-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.words-table tbody tr:hover {
+    background-color: #f1f8ff;
+}
+
+.words-table td {
+    padding: 14px 20px;
+    color: #333;
+}
+
+/* Сообщение о пустой таблице */
+.no-words-message {
+    text-align: center;
+    color: #7f8c8d;
+    padding: 30px;
+    font-style: italic;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.words-table tbody tr {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .mywords-container {
+        padding: 15px;
+    }
+    
+    .add-word-form {
+        padding: 20px 15px;
+    }
+    
+    .form-row {
+        gap: 15px;
+    }
+    
+    .form-group {
+        min-width: 100%;
+    }
+    
+    .words-table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .words-table th,
+    .words-table td {
+        padding: 12px 15px;
+    }
+    
+    .add-button {
+        width: 100%;
+    }
+}
+
+/* Эффекты для интерактивных элементов */
+.add-button {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.form-group input {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #ffeeee;
+    border: 1px solid #ffcccc;
+    border-radius: 4px;
+}
