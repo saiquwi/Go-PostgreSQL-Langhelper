@@ -1,0 +1,89 @@
+{{ define "content" }}
+<link rel="stylesheet" href="/static/css/flashcards.css" />
+<div class="flashcards-container">
+    <h1 class="flashcards-title">Flashcards Exercise</h1>
+
+    {{ if .Decks }}
+    <!-- Step 1: Deck Selection -->
+    <div class="flashcards-step">
+        <form method="POST" action="/flashcards" class="flashcards-form">
+            <input type="hidden" name="step" value="select_deck">
+            <div class="form-group">
+                <label for="deck_id" class="form-label">Choose deck:</label>
+                <select name="deck_id" id="deck_id" class="form-select" required>
+                    {{ range .Decks }}
+                        <option value="{{ .ID }}">{{ .DeckTitle }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Next</button>
+        </form>
+    </div>
+    {{ end }}
+
+    {{ if and .Deck .DeckLangs }}
+    <!-- Step 2: Language Selection -->
+    <div class="flashcards-step">
+        <form method="POST" action="/flashcards" class="flashcards-form">
+            <input type="hidden" name="step" value="select_lang">
+            <input type="hidden" name="deck_id" value="{{ .Deck.ID }}">
+            
+            <div class="form-group">
+                <label for="main_lang_id" class="form-label">Choose main language:</label>
+                <select name="main_lang_id" id="main_lang_id" class="form-select" required>
+                    {{ range .DeckLangs }}
+                        <option value="{{ .LangID }}">{{ .UserLang.LangTitle }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Start Test</button>
+        </form>
+    </div>
+    {{ end }}
+
+    {{ if .WordTests }}
+    <!-- Step 3: Test Interface -->
+    <div class="flashcards-test">
+        <h2 class="test-title">Flashcards Test</h2>
+        
+        <form method="POST" action="/flashcards/check" class="test-form">
+            <input type="hidden" name="deck_id" value="{{ .Deck.ID }}">
+            <input type="hidden" name="main_lang_id" value="{{ .MainLang }}">
+            
+            {{ range $i, $wt := .WordTests }}
+                <div class="test-card">
+                    <div class="card-header">
+                        <h3>{{ $wt.MainWord }}</h3>
+                        <input type="hidden" name="word_{{ $wt.WordID }}_main" value="{{ $wt.MainWord }}">
+                    </div>
+                    
+                    {{ range $j, $lt := $wt.Tests }}
+                        <div class="language-test">
+                            <div class="language-name">{{ $lt.DeckLang.UserLang.LangTitle }}</div>
+                            <input type="hidden" name="word_{{ $wt.WordID }}_lang_{{ $lt.DeckLang.LangID }}_correct" value="{{ $lt.Correct }}">
+                            
+                            <div class="options-container">
+                                {{ range $k, $opt := $lt.Options }}
+                                    <label class="option-label">
+                                        <input type="radio" 
+                                               name="word_{{ $wt.WordID }}_lang_{{ $lt.DeckLang.LangID }}" 
+                                               value="{{ $opt }}" 
+                                               class="option-input" 
+                                               required>
+                                        <span class="option-text">{{ $opt }}</span>
+                                    </label>
+                                {{ end }}
+                            </div>
+                        </div>
+                    {{ end }}
+                </div>
+            {{ end }}
+            
+            <div class="test-submit">
+                <button type="submit" class="btn btn-submit">Check Answers</button>
+            </div>
+        </form>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

@@ -1,4 +1,38 @@
-{{define "content"}}
-<h1>Welcome to Your Home Page!</h1>
-<p>Hello, {{.Username}}! This is your personal space.</p>
-{{end}}
+{{ define "content" }}
+<link rel="stylesheet" href="/static/css/home.css" />
+<div class="home-container">
+    <div class="welcome-section">
+        <h1 class="welcome-title">Welcome back, {{.Username}}!</h1>
+        <p class="welcome-message">Here's your learning progress:</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="dashboard-card stats-card">
+            <h3>Your Statistics</h3>
+            <div class="stat-item">
+                <span class="stat-value">{{.DeckCount}}</span>
+                <span class="stat-label">Decks created</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">{{.CardCount}}</span>
+                <span class="stat-label">Cards in total</span>
+            </div>
+        </div>
+
+        <div class="dashboard-card quick-actions">
+            <h3>Quick Actions</h3>
+            <a href="/mydecks" class="action-btn">
+                <span>➕</span> Create New Deck
+            </a>
+            <a href="/flashcards" class="action-btn">
+                <span>📚</span> Start Practice
+            </a>
+        </div>
+    </div>
+
+    <div class="motivational-quote">
+        <p>"Language is the road map of a culture. It tells you where its people come from and where they are going."</p>
+        <p class="quote-author">— Rita Mae Brown</p>
+    </div>
+</div>
+{{ end }}

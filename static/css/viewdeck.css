@@ -1,0 +1,131 @@
+/* Основные стили страницы */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Стиль для ссылки "Назад" */
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+    margin-top: 50px;
+}
+
+.back-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Заголовки */
+h2 {
+    color: #2c3e50;
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+h3 {
+    color: #34495e;
+    margin: 25px 0 15px;
+    font-size: 20px;
+}
+
+/* Формы */
+form {
+    margin: 15px 0;
+}
+
+select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+/* Кнопки */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Кнопки действий */
+.action-button {
+    padding: 5px 10px;
+    min-width: 30px;
+}
+
+.remove-button {
+    background-color: #e74c3c;
+}
+
+.remove-button:hover {
+    background-color: #c0392b;
+}
+
+.add-button {
+    background-color: #2ecc71;
+}
+
+.add-button:hover {
+    background-color: #27ae60;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+    }
+}

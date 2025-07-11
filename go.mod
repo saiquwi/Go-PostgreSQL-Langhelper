@@ -1,4 +1,4 @@
-module langhelper
+module langhelperCopy
 
 go 1.24.0
 

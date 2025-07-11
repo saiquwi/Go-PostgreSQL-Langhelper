@@ -14,7 +14,7 @@ import (
 var (
 	Store       *sessions.CookieStore
 	storeOnce   sync.Once
-	SessionName = "langhelper-session" // Сделал переменной для гибкости
+	SessionName = "langhelperCopy-session" // Сделал переменной для гибкости
 )
 
 func Init() {

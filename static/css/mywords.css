@@ -1,210 +1,160 @@
-/* Основные стили контейнера */
-/* Основные стили контейнера */
-.container {  /* Было .mywords-container */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+/* Main Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Заголовок страницы */
-.container h1 {
-    color: #2c3e50;
-    margin-top: 0;
-    margin-bottom: 2%;
-    text-align: center;
-    font-weight: 600;
-    font-size: 2.2rem;
+/* Headings */
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.add-word-form {
-    background-color: #ffffff; /* Белый фон для формы */
-    border-radius: 8px; /* Скругленные углы */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Тень для глубины */
-    padding: 20px; /* Отступы внутри формы */
-    width: 35vw; /* Максимальная ширина формы */
-    margin: 20px auto; /* Центрирование формы */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #444;
 }
 
-.add-word-form h2 {
-    font-size: 24px; /* Размер заголовка */
-    margin-bottom: 15px; /* Отступ снизу */
-    color: #333; /* Цвет текста заголовка */
+/* Buttons */
+button {
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.wordForm {
-    width: 90%;
+#showFormBtn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 20px;
 }
 
-.form-row {
-    display: flex; /* Используем flexbox для выравнивания элементов */
-    flex-direction: column; /* Вертикальное направление для мобильных устройств */
+#showFormBtn:hover {
+  background-color: #218838;
 }
 
-.translation-table {
-    display: flex; /* Используем flexbox для горизонтального выравнивания */
-    justify-content: space-between; /* Распределяем пространство между меткой и полем ввода */
-    margin-bottom: 15px; /* Отступ между группами полей */
-    align-items: center;
-}
-
-.form-group label {
-    flex: 1; /* Метка занимает 1 часть доступного пространства */
-    font-weight: bold; /* Жирный шрифт для меток */
-    color: #555; /* Цвет текста меток */
+/* Form Styles */
+#addWordForm {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  display: none;
 }
 
 .translation-input {
-    flex: 2; /* Поле ввода занимает 2 части доступного пространства */
-    width: 100%; /* Полная ширина поля ввода */
-    padding: 2%; /* Отступы внутри поля */
-    border: 1px solid #ccc; /* Цвет границы */
-    border-radius: 4px; /* Скругленные углы */
-    font-size: 16px; /* Размер шрифта */
-    transition: border-color 0.3s; /* Плавный переход для цвета границы */
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  margin-bottom: 15px;
 }
 
 .translation-input:focus {
-    border-color: #007BFF; /* Цвет границы при фокусе */
-    outline: none; /* Убираем стандартный контур */
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
 }
 
-.no-languages-message {
-    color: #d9534f; /* Цвет сообщения об ошибке */
-    margin-top: 10px; /* Отступ сверху */
+.form-actions {
+  margin-top: 15px;
 }
 
-.add-button {
-    background-color: #3498db; /* Цвет кнопки */
-    color: white; /* Цвет текста кнопки */
-    padding: 3% 4%; /* Отступы внутри кнопки */
-    border: none; /* Убираем стандартную границу */
-    border-radius: 4px; /* Скругленные углы */
-    cursor: pointer; /* Курсор при наведении */
-    font-size: 16px; /* Размер шрифта кнопки */
-    transition: background-color 0.3s; /* Плавный переход для цвета фона */
-    width: 10vw;
-    margin: 2% 30%;
+.form-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
 }
 
-.add-button:hover {
-    background-color: #3291d1; /* Цвет кнопки при наведении */
+.form-actions button[type="submit"] {
+  background-color: #007bff;
+  color: white;
 }
 
-/* Стили таблицы слов */
-.words-table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 30px;
-    background: #fff;
+.form-actions button[type="submit"]:hover {
+  background-color: #0069d9;
 }
 
-.words-table thead tr {
-    background-color: #3498db;
-    color: white;
+#cancelBtn {
+  background-color: #6c757d;
+  color: white;
 }
 
-.words-table th {
-    padding: 16px 20px;
-    font-weight: 600;
-    text-align: left;
-    position: relative;
+#cancelBtn:hover {
+  background-color: #5a6268;
 }
 
-.words-table th:first-child {
-    width: 80px;
-}
-
-.words-table tbody tr {
-    border-bottom: 1px solid #e0e0e0;
-    transition: background-color 0.2s;
-}
-
-.words-table tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
-}
-
-.words-table tbody tr:hover {
-    background-color: #f1f8ff;
-}
-
-.words-table td {
-    padding: 14px 20px;
-    color: #333;
-}
-
-/* Сообщение о пустой таблице */
-.no-words-message {
-    text-align: center;
-    color: #7f8c8d;
-    padding: 30px;
-    font-style: italic;
-}
-
-/* Анимации */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.words-table tbody tr {
-    animation: fadeIn 0.4s ease-out forwards;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .mywords-container {
-        padding: 15px;
-    }
-    
-    .add-word-form {
-        padding: 20px 15px;
-    }
-    
-    .form-row {
-        gap: 15px;
-    }
-    
-    .form-group {
-        min-width: 100%;
-    }
-    
-    .words-table {
-        display: block;
-        overflow-x: auto;
-    }
-    
-    .words-table th,
-    .words-table td {
-        padding: 12px 15px;
-    }
-    
-    .add-button {
-        width: 100%;
-    }
-}
-
-/* Эффекты для интерактивных элементов */
-.add-button {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.form-group input {
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
+/* Error Message */
 .error-message {
-    color: red;
-    margin-bottom: 10px;
-    padding: 5px;
-    background-color: #ffeeee;
-    border: 1px solid #ffcccc;
-    border-radius: 4px;
+  color: #dc3545;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #495057;
+}
+
+tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Action Buttons */
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  th, td {
+    min-width: 120px;
+  }
 }

@@ -1,0 +1,88 @@
+{{define "content"}}
+<link rel="stylesheet" href="/static/css/viewdeck.css">
+
+<a href="/mydecks" class="back-link">← Back to My Decks</a>
+
+<h2>Deck: {{.Deck.DeckTitle}}</h2>
+
+<h3>Add Language to Deck</h3>
+<form method="POST" action="/deck/addlang/{{.Deck.ID}}">
+  <select name="lang_id" required>
+    {{range .AvailableLanguages}}
+      <option value="{{.ID}}">{{.LangTitle}}</option>
+    {{end}}
+  </select>
+  <button type="submit">Add</button>
+</form>
+
+<h3>Languages in this Deck</h3>
+<table>
+  <tr><th>Language</th><th></th></tr>
+  {{range .DeckLanguages}}
+  <tr>
+    <td>{{.LangTitle}}</td>
+    <td>
+      <form method="POST" action="/deck/removelang/{{$.Deck.ID}}/{{.ID}}">
+        <button type="submit" class="action-button remove-button" onclick="return confirm('Remove this language from deck?');">Remove</button>
+      </form>
+    </td>
+  </tr>
+  {{end}}
+</table>
+
+<h3>Words in Deck</h3>
+<table>
+  <thead>
+    <tr>
+      {{range .DeckLanguages}}
+        <th>{{.LangTitle}}</th>
+      {{end}}
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range $word := .DeckWords}}
+    <tr>
+      {{range $.DeckLanguages}}
+        <td>{{index $word.Translations .LangTitle}}</td>
+      {{end}}
+      <td>
+        <form method="POST" action="/decks/removeword">
+          <input type="hidden" name="deck_id" value="{{$.Deck.ID}}">
+          <input type="hidden" name="word_id" value="{{.WordID}}">
+          <button type="submit" class="action-button remove-button">-</button>
+        </form>
+      </td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+
+<h3>Available Words to Add</h3>
+<table>
+  <thead>
+    <tr>
+      {{range .DeckLanguages}}
+        <th>{{.LangTitle}}</th>
+      {{end}}
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{range $word := .AvailableWords}}
+    <tr>
+      {{range $.DeckLanguages}}
+        <td>{{index $word.Translations .LangTitle}}</td>
+      {{end}}
+      <td>
+        <form method="POST" action="/decks/addword">
+          <input type="hidden" name="deck_id" value="{{$.Deck.ID}}">
+          <input type="hidden" name="word_id" value="{{$word.WordID}}">
+          <button type="submit" class="action-button add-button">+</button>
+        </form>
+      </td>
+    </tr>
+    {{end}}
+  </tbody>
+</table>
+{{end}}

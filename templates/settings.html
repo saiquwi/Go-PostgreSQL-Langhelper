@@ -1,4 +1,43 @@
 {{define "content"}}
-<h1>Settings</h1>
-<p>This is the settings page. You can adjust your settings here.</p>
+<link rel="stylesheet" href="/static/css/settings.css">
+
+<div class="settings-container">
+    <h1>Account Settings</h1>
+    
+    {{if .SuccessMessage}}
+    <div class="alert alert-success">
+        {{.SuccessMessage}}
+    </div>
+    {{end}}
+    
+    {{if .ErrorMessage}}
+    <div class="alert alert-error">
+        {{.ErrorMessage}}
+    </div>
+    {{end}}
+
+    <div class="settings-section">
+        <h2>Change Username</h2>
+        <form method="POST" action="/settings/username">
+            <div class="form-group">
+                <label for="current_username">Current Username:</label>
+                <input type="text" id="current_username" value="{{.CurrentUsername}}" disabled>
+            </div>
+            
+            <div class="form-group">
+                <label for="new_username">New Username:</label>
+                <input type="text" id="new_username" name="new_username" required
+                       minlength="3" maxlength="20" value="{{.NewUsername}}">
+                <small class="form-hint">(3-20 characters)</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Confirm Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Update Username</button>
+        </form>
+    </div>
+</div>
 {{end}}

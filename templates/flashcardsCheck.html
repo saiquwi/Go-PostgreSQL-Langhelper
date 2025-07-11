@@ -1,0 +1,41 @@
+{{ define "content" }}
+<link rel="stylesheet" href="/static/css/flashcardsCheck.css">
+
+<div class="results-container">
+  <a href="/flashcards" class="back-link">← Try another deck</a>
+    <h1 class="results-title">Results</h1>
+
+    <div class="results-table-container">
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th class="main-word-header">{{ .MainLangTitle }}</th>
+                    {{ range .LangTitles }}
+                        <th class="lang-header">{{ . }}</th>
+                    {{ end }}
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .Results }}
+                <tr class="result-row">
+                    <td class="main-word-cell">{{ .MainWord }}</td>
+                    {{ range .LangResults }}
+                        <td class='result-cell {{ if eq .Status "correct" }}correct-answer{{ else }}incorrect-answer{{ end }}'>
+                            <div class="answer-feedback">
+                                {{ if eq .Status "correct" }}
+                                    <span class="correct-icon">✓</span>
+                                    <span>Your answer is correct: <strong>{{ .Chosen }}</strong></span>
+                                {{ else }}
+                                    <span>Your answer: <strong>{{ .Chosen }}</strong><br>
+                                    <span class="notchosen-correct">Correct answer: <strong>{{ .Correct }}</strong></span></span>
+                                {{ end }}
+                            </div>
+                        </td>
+                    {{ end }}
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{ end }}

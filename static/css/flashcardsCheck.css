@@ -1,0 +1,121 @@
+.back-link {
+    display: inline-block;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.results-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.results-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+    align-items: start;
+}
+
+.results-table-container {
+    overflow-x: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.results-table th {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.main-word-header {
+    width: 20%;
+    min-width: 150px;
+}
+
+.lang-header {
+    min-width: 200px;
+}
+
+.result-row {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+.result-cell {
+    padding: 1rem;
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+.main-word-cell {
+    font-weight: 600;
+    color: #2c3e50;
+    padding: 1rem;
+}
+
+.correct-answer {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.incorrect-answer {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.correct-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.answer-feedback {
+    display: flex;
+    align-items: center;
+}
+
+.answer-label {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.notchosen-correct {
+  color:#2980b9;
+}
+
+@media (max-width: 768px) {
+    .results-container {
+        padding: 1rem;
+    }
+    
+    .results-table th,
+    .results-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}

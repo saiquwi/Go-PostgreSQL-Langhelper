@@ -1,49 +1,48 @@
-{{define "content"}}
+{{ define "content" }}
 <link rel="stylesheet" href="/static/css/mylanguages.css">
+<div class="languages-container">
+    <h2>My Languages</h2>
 
-<div class="container">
-    <h1>My Languages</h1>
-    
-    {{if .Error}}
-    <div class="alert alert-danger">{{.Error}}</div>
-    {{end}}
-    
-    {{if .Success}}
-    <div class="alert alert-success">Languages successfully updated!</div>
-    {{end}}
-
-    <form method="POST" action="/mylanguages">
-        <div class="form-group">
-            <label for="lang1">Language 1:</label>
-            <input type="text" class="form-control" id="lang1" name="lang1" value="{{.Langs.Lang1}}" 
-                   placeholder="e.g. English" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="lang2">Language 2:</label>
-            <input type="text" class="form-control" id="lang2" name="lang2" value="{{.Langs.Lang2}}" 
-                   placeholder="e.g. Spanish">
-        </div>
-        
-        <div class="form-group">
-            <label for="lang3">Language 3:</label>
-            <input type="text" class="form-control" id="lang3" name="lang3" value="{{.Langs.Lang3}}" 
-                   placeholder="e.g. French">
-        </div>
-        
-        <div class="form-group">
-            <label for="lang4">Language 4:</label>
-            <input type="text" class="form-control" id="lang4" name="lang4" value="{{.Langs.Lang4}}" 
-                   placeholder="e.g. German">
-        </div>
-        
-        <div class="form-group">
-            <label for="lang5">Language 5:</label>
-            <input type="text" class="form-control" id="lang5" name="lang5" value="{{.Langs.Lang5}}" 
-                   placeholder="e.g. Japanese">
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Save Languages</button>
+    <form class="languages-form" action="/mylanguages" method="POST">
+        <input type="text" name="langtitle" placeholder="New language" required>
+        <button type="submit">Add Language</button>
     </form>
+
+    <table class="languages-table">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        {{range .Languages}}
+        <tr>
+            <form action="/mylanguages/edit/{{.ID}}" method="POST">
+                <td>
+                    {{if eq $.EditID .ID}}
+                        <input class="edit-input" type="text" name="newtitle" value="{{.LangTitle}}">
+                    {{else}}
+                        {{.LangTitle}}
+                    {{end}}
+                </td>
+                <td>
+                    {{if eq $.EditID .ID}}
+                        <button class="action-button save-button" type="submit">Save</button>
+                    {{else}}
+                        <a class="action-link" href="/mylanguages?edit={{.ID}}">Edit</a>
+                    {{end}}
+                </td>
+            </form>
+            <form action="/mylanguages/delete/{{.ID}}" method="POST">
+                <td>
+                    <button class="action-button delete-button" type="submit" 
+                            onclick="return confirm('Are you sure you want to delete this language?');">
+                        Delete
+                    </button>
+                </td>
+            </form>
+        </tr>
+        {{end}}
+    </table>
 </div>
-{{end}}
+{{ end }}

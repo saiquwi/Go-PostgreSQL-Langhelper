@@ -2,21 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="/static/css/auth.css">
 </head>
 <body>
-    <h1>Register</h1>
-    <form method="post">
-        <div>
-            <input type="text" name="username" placeholder="Username" value="{{.Username}}" required>
-            {{range .ValidationErrors}}
-                <p style="color:red;">{{.}}</p>
-            {{end}}
+<div class="auth-container">
+    <h1 class="auth-title">Register</h1>
+    
+    {{ if .Errors.general }}
+        <div class="alert alert-danger">{{ .Errors.general }}</div>
+    {{ end }}
+    
+    <form method="post" class="auth-form">
+        <div class="form-group">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" class="form-input {{ if .Errors.username }}is-invalid{{ end }}" 
+                   value="{{ .Username }}" required>
+            {{ if .Errors.username }}
+                <div class="error-message">{{ .Errors.username }}</div>
+            {{ end }}
         </div>
-        <div>
-            <input type="password" name="password" placeholder="Password" required>
+        
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-input {{ if .Errors.password }}is-invalid{{ end }}" 
+                   required>
+            {{ if .Errors.password }}
+                <div class="error-message">{{ .Errors.password }}</div>
+            {{ end }}
+            <div class="password-hints">
+                <small>Password requirements:</small>
+                <ul class="requirements-list">
+                    <li class="{{ if not .Errors.password }}text-muted{{ end }}">At least 8 characters</li>
+                    <li class="{{ if not .Errors.password }}text-muted{{ end }}">Uppercase and lowercase letters</li>
+                    <li class="{{ if not .Errors.password }}text-muted{{ end }}">At least one number</li>
+                    <li class="{{ if not .Errors.password }}text-muted{{ end }}">At least one special character</li>
+                </ul>
+            </div>
         </div>
-        <button type="submit">Register</button>
+        
+        <button type="submit" class="submit-btn">Register</button>
     </form>
+    
+    <div class="login-link">
+        Already have an account? <a href="/login">Login here</a>
+    </div>
+</div>
 </body>
 </html>

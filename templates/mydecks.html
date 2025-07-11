@@ -1,0 +1,44 @@
+{{ define "content" }}
+<link rel="stylesheet" href="/static/css/mydecks.css">
+
+<h2>My Decks</h2>
+
+<!-- Кнопка для показа формы -->
+<button id="showDeckForm" class="btn btn-primary mb-3">+ Create New Deck</button>
+
+<!-- Форма создания колоды -->
+<div id="newDeckForm" style="display:none;">
+  <form id="deckForm" method="POST" action="/mydecks">
+    <div class="form-group">
+      <label for="deckTitle">Deck Title</label>
+      <input type="text" class="form-control" id="deckTitle" name="deck_title" required>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Create Deck</button>
+  </form>
+  <hr>
+</div>
+
+<!-- Список колод -->
+<div>
+  {{ if .Decks }}
+    <ul class="list-group">
+      {{ range .Decks }}
+        <li class="list-group-item">
+          <div>
+            <strong>{{ .DeckTitle }}</strong><br>
+            {{ range $index, $lang := .Languages }}{{ if $index }}, {{ end }}{{ $lang }}{{ end }}
+          </div>
+          <div>
+            <a href="/deck/{{ .ID }}" class="btn btn-sm btn-outline-primary">Open</a>
+          </div>
+        </li>
+      {{ end }}
+    </ul>
+  {{ else }}
+    <p>No decks found.</p>
+  {{ end }}
+</div>
+
+<script src="/static/js/mydecks.js"></script>
+{{ end }}

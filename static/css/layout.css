@@ -4,6 +4,8 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    padding-top: 60px; /* Отступ для хедера */
+    padding-bottom: 30px; /* Отступ для футера */
 }
 
 header {
@@ -14,7 +16,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
+    height: 8%;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #menu-toggle {
@@ -22,67 +26,96 @@ header {
     padding: 10px;
     color: white;
     border: none;
+    background: none;
+    font-size: 1.2em;
 }
 
 #sidebar {
     width: 200px;
     position: fixed;
-    top: 50px;
+    top: 12%;
     left: 0;
-    height: calc(100% - 50px);
+    bottom: 30px;
     background-color: #f4f4f4;
     transition: left 0.3s;
-    padding: 10px;
+    padding: 15px 0;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-#sidebar h2 {
-    font-size: 18px;
+    overflow-y: auto;
 }
 
 #sidebar ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
-#sidebar ul li {
-    margin: 10px 0;
+#sidebar > ul > li {
+    margin: 5px 0;
 }
 
-#sidebar ul li a {
+#sidebar ul li a,
+#sidebar ul li .submenu-toggle {
     text-decoration: none;
     color: #333;
-    padding: 8px;
+    padding: 8px 15px;
     display: block;
     border-radius: 4px;
+    cursor: pointer;
 }
 
-#sidebar ul li a:hover {
+#sidebar ul li a:hover,
+#sidebar ul li .submenu-toggle:hover {
     background-color: #e9ecef;
 }
 
 .submenu {
-    display: none; /* Скрываем вложенные списки по умолчанию */
-    padding-left: 15px; /* Отступ для вложенных списков */
+    display: none;
+    padding-left: 10px;
 }
 
-.submenu-toggle {
-    cursor: pointer; /* Курсор при наведении на заголовок подменю */
-    color: #007BFF; /* Цвет текста для заголовка подменю */
+.submenu li a {
+    padding-left: 25px !important;
 }
 
-.submenu-toggle:hover {
-    text-decoration: underline; /* Подчеркивание при наведении */
+.submenu.active {
+    display: block;
 }
 
 #content {
-    margin-left: 220px; /* Отступ для контента */
+    flex: 1;
+    margin-left: 220px;
     padding: 20px;
+    transition: margin-left 0.3s;
+    overflow-y: auto;
 }
 
 footer {
     text-align: center;
     padding: 10px;
     background-color: #f1f1f1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+    z-index: 90;
+}
+
+/* Для мобильных устройств можно добавить адаптивность */
+@media (max-width: 768px) {
+    #sidebar {
+        left: -220px;
+    }
+    
+    #sidebar.active {
+        left: 0;
+    }
+    
+    #content {
+        margin-left: 0;
+    }
+    
+    #sidebar.active + #content {
+        margin-left: 220px;
+    }
 }
